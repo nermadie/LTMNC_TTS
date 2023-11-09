@@ -25,8 +25,6 @@ SECRET_KEY = "django-insecure-fz0ylhoo7vgxjqatc%igi5--7n$#ccbi5#h4yux20@2&o)y&j5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -130,3 +128,4 @@ TIME_ZONE = "Asia/Ho_Chi_Minh"
 MEDIA_ROOT = os.path.join(BASE_DIR, "data/")
 # Đường dẫn URL dẫn đến thư mục lưu trữ file trên giao diện
 MEDIA_URL = "/data/"
+ALLOWED_HOSTS = ["35.91.65.3"]
