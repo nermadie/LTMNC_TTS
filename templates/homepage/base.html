@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TTS</title>
+    <link rel="stylesheet" href="{% static 'homepage/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'utils/css/reset.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    {% block cssblock %}
+    {% endblock %}
+    <style>
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="navbar-container" style="">
+        <div class="logo-wrapper">
+            <a href="{% url 'homepage:text' %}" style=" text-decoration: none;"><span style="font-weight: 900;">📃TEXT TO SPEECH🎙️</span></a>
+        </div>
+        <div class="navbar-left" style="display: flex; justify-self: center; align-items: center;">
+            <span id="username" style="margin-right: 10px;">👋Welcome, <strong
+                    style="font-weight: 700">{{ name }}</strong></span>
+            <div class="menu-button">
+                <i class="fa-solid fa-bars menu-icon"></i>
+                <ul class="menu">
+                    <li class="menu-item"><a href="{% url 'homepage:user_history' %}" class="menu-link"><i
+                            class="fa-solid fa-clock-rotate-left"></i>History</a>
+                    </li>
+                    <li class="menu-item"><a href="{% url 'login:logout' %}" class="menu-link"><i
+                            class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="tts-container">
+    {% block tts_content %}{% endblock tts_content %}
+</div>
+{% block jsblock %}
+{% endblock jsblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "login/base.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block cssblock %}
+        <link rel="stylesheet" href="{% static 'login/css/login.css' %}" />
+{% endblock cssblock %}
+{% block login_content %}
+<div class="login-form-wrapper">
+    <h3 class="form-title">Hello Again!</h3>
+    <p class="form-desc"><i>Welcome back👋</i></p>
+    <form action="" method="post" class="form-wrapper">
+        {% csrf_token %}
+        <input type="text" name="username" class="input-box"/>
+        <input type="password" name="password" class="input-box"/>
+        <input type="submit" value="Login" class="button button-submit"/>
+    </form>
+    <a href="{% url 'login:register' %}" class="button button_register">Register</a>
+</div>
+{% endblock login_content %}
+{% block jsblock %}
+{#    <script src="{% static 'login/js/login.js' %}"></script>#}
+{% endblock jsblock %}
+

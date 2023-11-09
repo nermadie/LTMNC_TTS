@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="OneTech shop project" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{% static 'login/css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'utils/css/reset.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        {% block cssblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="login-wrapper">
+            <div class="form-container">
+                <div class="left-side-wrapper">
+                    <div class="left-side">
+                        <p class="title">TEXT TO SPEECH</p>
+                        <img src="{%static '/login/images/logo.png' %}" alt="logo" class="logo">
+                    </div>
+                </div>
+                <div class="right-side-wrapper">
+                    {% block login_content %}{% endblock login_content %}
+                    {% block register_content %}{% endblock register_content %}
+                </div>
+            </div>
+        </div>
+        {% block jsblock %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,61 @@
+.form-title{
+    display: block;
+    width: 50%;
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    margin: 0 auto 2rem;
+}
+.form-desc{
+    display: block;
+    width: 50%;
+    font-size: 2rem;
+    color: white;
+    margin: 0 auto 2rem;
+}
+.login-form-wrapper{
+    width: 100%;
+}
+.form-wrapper{
+    width: 100%;
+}
+.input-box{
+    display: block;
+    height: 4rem;
+    width: 50%;
+    line-height: 4rem;
+    padding-left: 2rem;
+    border-radius: 2rem;
+    font-size: 1.6rem;
+    margin: 0 auto 1.5rem;
+    border: none;
+}
+.button{
+    display: block;
+    height: 4rem;
+    width: 50%;
+    border-radius: 2rem;
+    font-size: 1.6rem;
+    margin: 0 auto 1.5rem;
+}
+.button-submit{
+    cursor: pointer;
+    background-color: #0d6efd;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    border: none;
+}
+.button-submit:hover{
+    background-color: #0b5ed7;
+}
+.button_register{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    background-color: white;
+    line-height: 4rem;
+    transition: all 0.2s ease-in-out;
+}
+.button_register:hover{
+    background-color: #e9ecef;
+}

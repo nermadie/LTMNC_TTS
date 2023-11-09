@@ -1,0 +1,33 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block cssblock %}
+    <link rel="stylesheet" href="{% static 'homepage/css/file.css' %}">
+{% endblock %}
+{% block tts_content %}
+    <div class="input-option-container">
+        <a href="{% url 'homepage:text' %}" class="text-input-option input-option not-active">
+            <i class="fa-solid fa-font" class="input-logo"></i>
+            <span class="input-text">Text</span>
+        </a>
+        <a href="#" class="file-input-option input-option active">
+            <i class="fa-solid fa-file" class="input-logo"></i>
+            <span class="input-text">File</span>
+        </a>
+    </div>
+    <form method="post" enctype="multipart/form-data" id="tts-wrapper" class="tts-wrapper">
+        {% csrf_token %}
+        <img src="{% static 'homepage/images/import.png' %}" alt="import" class="image-holder">
+        <input type="file" name="file" accept=".txt" class="form-control" id="customFile">
+        <div style="border-bottom: 1px solid #0f0e0e;"></div>
+        <div style="display: flex; justify-content: space-evenly;align-items: center;height: 60px;">
+            <div class="lang-options-wrapper">
+                <label for="langs">Select Language:</label>
+                <select id="langs" name="langs">
+                    <option value="vietnamese">Vietnamese</option>
+                    <option value="english">English</option>
+                </select>
+            </div>
+            <button type="submit" id="text-input-btn">File To Speech</button>
+        </div>
+    </form>
+{% endblock tts_content %}

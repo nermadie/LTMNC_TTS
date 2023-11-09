@@ -1,0 +1,101 @@
+
+.tts-wrapper {
+    border-radius: 5px;
+    border: 1px solid #0f0e0e;
+}
+
+.tts-wrapper .text-input {
+    display: flex;
+    border-bottom: 1px solid #bbb;
+}
+
+.text-input .to-text {
+    border-left: 1px solid #bbb;
+}
+
+.text-input textarea {
+    height: 250px;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 18px;
+    border-radius: 5px;
+    background: none;
+    padding: 10px 15px;
+}
+
+.tts-container button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+    background: #5372f0;
+}
+
+.input-option-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.input-option {
+    width: 10rem;
+    height: 4rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.input-text {
+    width: 5rem;
+}
+
+.input-option.active {
+    background-color: #5372f0;
+    color: white;
+}
+
+.input-option.active:hover {
+    background-color: #4157c4;
+    color: white;
+}
+
+.input-option.not-active:hover {
+    background-color: #dedede;
+}
+
+#text-input-btn {
+    width: 40%;
+    height: 80%;
+    transition: all 0.2s ease-in-out;
+}
+
+#text-input-btn:hover {
+    background-color: #4157c4;
+    color: white;
+}
+
+.image-holder {
+    display: block;
+    width: 20rem;
+    height: 20rem;
+    margin: 3rem auto;
+}
+
+.form-control {
+    display: block;
+    margin: 1rem auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}

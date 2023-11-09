@@ -1,0 +1,43 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block cssblock %}
+    <link rel="stylesheet" href="{% static 'homepage/css/processing.css' %}">
+{% endblock %}
+{% block tts_content %}
+    <div id="tts-wrapper" class="tts-wrapper">
+        <img src="{% static 'homepage/images/processing.gif' %}" alt="processing" class="processing-img"/>
+        <p class="processing-text">Please wait for a moment, we're working on it...</p>
+    </div>
+{% endblock tts_content %}
+{% block jsblock %}
+    <script>
+        function checkStatus() {
+            var user_id ={{ user_id }};
+            var upload_time = '{{ upload_time }}';
+            var url = `/is_processed/${user_id}/${upload_time}/`;
+            fetch(url)
+                .then(response => response.json()
+                )
+                .then(data => {
+                    var status = data.status;
+                    if (status) {
+                        var audio = document.createElement('audio');
+                        audio.controls = true;
+                        var source = document.createElement('source');
+                        source.src = {{ MEDIA_URL }} +data.wav_file_path.replace(/\\/g, "/");
+                        {#source.src = data.wav_file_path;#}
+                        source.type = 'audio/wav';
+                        audio.appendChild(source);
+                        var ttsWrapper = document.getElementById('tts-wrapper');
+                        ttsWrapper.innerHTML = '';
+                        audio.style.width = '100%';
+                        ttsWrapper.appendChild(audio);
+                        clearInterval(checkInterval);
+                    }
+                });
+        }
+
+        var checkInterval = setInterval(checkStatus, 3000);
+        checkStatus();
+    </script>
+{% endblock %}

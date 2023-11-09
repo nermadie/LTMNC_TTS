@@ -1,0 +1,19 @@
+{% extends "homepage/base.html" %}
+{% load static %}
+{% block cssblock %}
+    <link rel="stylesheet" href="{% static 'homepage/css/user_history.css' %}">
+{% endblock %}
+{% block tts_content %}
+    <h1>List of Processed Files</h1>
+    <ul>
+        {% for processed_file in processed_files %}
+            <li>
+                {% if processed_file.status %}
+                    Bản âm thanh: {{ processed_file.wav_file_path }}
+                {% else %}
+                    Processing: {{ processed_file.input_file_path }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock tts_content %}
