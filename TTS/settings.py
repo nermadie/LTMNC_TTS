@@ -128,4 +128,4 @@ TIME_ZONE = "Asia/Ho_Chi_Minh"
 MEDIA_ROOT = os.path.join(BASE_DIR, "data/")
 # Đường dẫn URL dẫn đến thư mục lưu trữ file trên giao diện
 MEDIA_URL = "/data/"
-ALLOWED_HOSTS = ["35.91.65.3"]
+ALLOWED_HOSTS = ["35.91.65.3", "127.0.0.1"]

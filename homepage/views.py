@@ -4,10 +4,8 @@ import time
 from datetime import datetime
 
 from django.contrib.auth.models import User
-from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
-from django.utils import timezone
 from django.views import View
 
 from ai_handler.vietTTS.synthesizer import synthesize_text
@@ -27,9 +25,9 @@ def process_file(uploaded_file, user_id, upload_time):
         text = uploaded_file_data.decode("utf-8")
         with open(filename, "w", encoding="utf-8") as file:
             file.write(text)
+        folder_path = os.path.join("input", str(user_id))
+        filename = os.path.join(folder_path, f"{upload_time_namefile}.txt")
         output_folder = os.path.join("output", str(user_id))
-        if not os.path.exists(output_folder):
-            os.makedirs(output_folder)
         output_filename = os.path.join(output_folder, f"{upload_time_namefile}.wav")
         processed_file = ProcessedFile(
             user=User.objects.get(id=user_id),
@@ -39,9 +37,10 @@ def process_file(uploaded_file, user_id, upload_time):
             wav_file_path=output_filename,
         )
         processed_file.save()
-        output_filename = os.path.join(
-            "data", "output", str(user_id), f"{upload_time_namefile}.wav"
-        )
+        output_folder = os.path.join("data", "output", str(user_id))
+        output_filename = os.path.join(output_folder, f"{upload_time_namefile}.wav")
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
         synthesize_text(text=text, output_path=output_filename)
         processed_file.status = True
         processed_file.save()
@@ -58,9 +57,9 @@ def process_text(input_text, user_id, upload_time):
         filename = os.path.join(folder_path, f"{upload_time_namefile}.txt")
         with open(filename, "w", encoding="utf-8") as file:
             file.write(input_text)
+        folder_path = os.path.join("input", str(user_id))
+        filename = os.path.join(folder_path, f"{upload_time_namefile}.txt")
         output_folder = os.path.join("output", str(user_id))
-        if not os.path.exists(output_folder):
-            os.makedirs(output_folder)
         output_filename = os.path.join(output_folder, f"{upload_time_namefile}.wav")
         processed_file = ProcessedFile(
             user=User.objects.get(id=user_id),
@@ -70,9 +69,10 @@ def process_text(input_text, user_id, upload_time):
             wav_file_path=output_filename,
         )
         processed_file.save()
-        output_filename = os.path.join(
-            "data", "output", str(user_id), f"{upload_time_namefile}.wav"
-        )
+        output_folder = os.path.join("data", "output", str(user_id))
+        output_filename = os.path.join(output_folder, f"{upload_time_namefile}.wav")
+        if not os.path.exists(output_folder):
+            os.makedirs(output_folder)
         synthesize_text(text=input_text, output_path=output_filename)
         processed_file.status = True
         processed_file.save()
@@ -145,7 +145,10 @@ def is_processed(request, user_id, upload_time):
 
 def user_history(request):
     user_id = request.user.id
+    name = request.user.username
     processed_files = ProcessedFile.objects.filter(user_id=user_id)
     return render(
-        request, "homepage/user_history.html", {"processed_files": processed_files}
+        request,
+        "homepage/user_history.html",
+        {"processed_files": processed_files, "name": name},
     )

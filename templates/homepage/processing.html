@@ -24,8 +24,7 @@
                         var audio = document.createElement('audio');
                         audio.controls = true;
                         var source = document.createElement('source');
-                        source.src = {{ MEDIA_URL }} +data.wav_file_path.replace(/\\/g, "/");
-                        {#source.src = data.wav_file_path;#}
+                        source.src = {{ MEDIA_URL }} +data.wav_file_path;
                         source.type = 'audio/wav';
                         audio.appendChild(source);
                         var ttsWrapper = document.getElementById('tts-wrapper');

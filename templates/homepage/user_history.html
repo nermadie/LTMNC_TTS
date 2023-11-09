@@ -4,14 +4,23 @@
     <link rel="stylesheet" href="{% static 'homepage/css/user_history.css' %}">
 {% endblock %}
 {% block tts_content %}
-    <h1>List of Processed Files</h1>
+    <h1 class="history-title">List of Processed Files</h1>
     <ul>
         {% for processed_file in processed_files %}
-            <li>
+            <li class="history-item">
                 {% if processed_file.status %}
-                    Bản âm thanh: {{ processed_file.wav_file_path }}
+                    <div class="history-status history-status-success"></div>
+                    <audio controls class="history-audio">
+                        <source src="{{ MEDIA_URL }}{{ processed_file.wav_file_path }}" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <a href="{{ MEDIA_URL }}{{ processed_file.input_file_path }}" download>Download Input File</a>
+                    <span class="history-time">{{ processed_file.upload_time }}</span>
                 {% else %}
-                    Processing: {{ processed_file.input_file_path }}
+                    <div class="history-status history-status-processing"></div>
+                    <span style="font-size: 1.6rem; font-weight: 700;margin-right: 2rem">Processing: </span>
+                    <a href="{{ MEDIA_URL }}{{ processed_file.input_file_path }}" download>Download Input File</a>
+                    <span class="history-time">{{ processed_file.upload_time }}</span>
                 {% endif %}
             </li>
         {% endfor %}
