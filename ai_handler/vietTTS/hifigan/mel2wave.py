@@ -18,8 +18,11 @@ class AttrDict(dict):
 
 
 def mel2wave(mel):
-    # config_file = "assets/hifigan/config.json"
-    config_file = "D:/PBL6/Test/vietTTS/assets/hifigan/config.json"
+    import os
+
+    current_directory = os.path.dirname(__file__)
+    config_file = current_directory + "/../assets/hifigan/config.json"
+    # config_file = "D:/PBL6/Test/vietTTS/assets/hifigan/config.json"
     MAX_WAV_VALUE = 32768.0
     with open(config_file) as f:
         data = f.read()

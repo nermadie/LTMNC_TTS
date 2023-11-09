@@ -7,7 +7,19 @@ from .hifigan.mel2wave import mel2wave
 from .nat.config import FLAGS
 from .nat.text2mel import text2mel
 
-def synthesize_text(text, output_path, sample_rate=16000, silence_duration=0.2, lexicon_file="D:/PBL6/Test/vietTTS/assets/infore/lexicon.txt"):
+import os
+
+current_directory = os.path.dirname(__file__)
+
+
+# def synthesize_text(text, output_path, sample_rate=16000, silence_duration=0.2, lexicon_file="D:/PBL6/Test/vietTTS/assets/infore/lexicon.txt"):
+def synthesize_text(
+    text,
+    output_path,
+    sample_rate=16000,
+    silence_duration=0.2,
+    lexicon_file=current_directory + "/assets/infore/lexicon.txt",
+):
     def nat_normalize_text(text):
         text = unicodedata.normalize("NFKC", text)
         text = text.lower().strip()
@@ -26,6 +38,7 @@ def synthesize_text(text, output_path, sample_rate=16000, silence_duration=0.2, 
     wave = mel2wave(mel)
     print("Writing output to file", output_path)
     sf.write(output_path, wave, samplerate=sample_rate)
+
 
 # Sử dụng hàm synthesize_text với các tham số cụ thể
 # Ví dụ:

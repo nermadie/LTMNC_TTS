@@ -55,8 +55,11 @@ class FLAGS(Namespace):
     token_mask_prob = 0.1
 
     # ckpt
-    ckpt_dir = Path("D:/PBL6/Test/vietTTS/assets/infore/nat")
-    # ckpt_dir = Path("assets/infore/nat")
+    # ckpt_dir = Path("D:/PBL6/Test/vietTTS/assets/infore/nat")
+    import os
+
+    current_directory = os.path.dirname(__file__)
+    ckpt_dir = Path(current_directory + "/../assets/infore/nat")
     data_dir = Path("train_data")
 
 
